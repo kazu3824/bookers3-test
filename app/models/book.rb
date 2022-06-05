@@ -11,17 +11,17 @@ class Book < ApplicationRecord
   end
 
   def self.search(method,word)
-   if method == "forward_match"
+   if method == "forward"
       @books = Book.where("title LIKE?","#{word}%")
-   elsif method == "backward_match"
+   elsif method == "backward"
       @books = Book.where("title LIKE?","%#{word}")
-   elsif method == "perfect_match"
+   elsif method == "perfect"
       @books = Book.where("title LIKE?","#{word}")
-   elsif method == "partial_match"
+   elsif method == "partial"
       @books = Book.where("title LIKE?","%#{word}%")
    else
        @books = Book.all
    end
- end
+  end
 end
 
