@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :books
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_books, through: :favorites, source: :book
+ 
+  
   # フォローされている側のUserから見て、フォローしてくる側のUserを(中間テーブルを介して)集める。参照するカラムは’followee_id’(フォローされる側)
   has_many :reverse_of_relationships, class_name: "Relationship",foreign_key: "followed_id",dependent: :destroy
   #一覧画面で使う中間テーブル(relationships)を介して「user」モデルのUser(フォローする側)「follower_id」を集めることを「followers」と定義
