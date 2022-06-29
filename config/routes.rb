@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
     get 'search' => 'searches#search', as: 'search'
     get 'chat/:id', to: 'chats#show', as: 'chat'
-    resources :chats, only: [:create]
+    resources :chats, only: [:show, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
  end
 
